@@ -5,31 +5,33 @@ import CreateTaskButton from "./CreateTaskButton";
 import CreateTaskForm from "./CreateTaskForm";
 import { useState } from "react";
 import TaskCard from "../task/TaskCard";
+import { useDroppable } from "@dnd-kit/core";
 
 export default function TodoCard({
   title,
-  tasks,
+  children,
   status,
-  updateTask,
   onSubmit,
-  onDelete
 }: {
   title: string;
-  tasks: TaskView[];
+  children: any,
   status: string;
-  updateTask: any;
   onSubmit: any;
-  onDelete: any;
 }) {
   const [isCreating, setIsCreating] = useState(false);
 
+  const {isOver, setNodeRef} = useDroppable({
+    id: status,
+  });
+  const style = {
+    opacity: isOver ? 1 : 0.5,
+  };
+
   return (
-    <article className="flex flex-col">
+    <article ref={setNodeRef} className="flex flex-col m-5 w-1/3 min-h-[40rem] bg-white rounded-md p-4 shadow-md">
       <h2>{title}</h2>
 
-      {tasks.map((x) => {
-        return <TaskCard status={status} updateTask={updateTask} onDelete={onDelete} key={x.id} task={x}></TaskCard>;
-      })}
+      {children}
 
       {isCreating ? (
         <CreateTaskForm

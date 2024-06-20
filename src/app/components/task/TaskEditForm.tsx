@@ -26,16 +26,6 @@ export default function TaskEditForm({task, status, updateTask, onUpdated, onCan
     updateTask(sendTask);
 
     onUpdated();
-
-    console.log(sendTask);
-
-    // ref.current?.reset();
-
-    // setTaskToEdit({
-    //   id: "",
-    //   description: "",
-    //   deadline: ""
-    // });
   }
 
   return (
