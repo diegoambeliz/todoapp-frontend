@@ -17,12 +17,14 @@ export default function TaskCard({
   id,
   task,
   status,
+  color,
   updateTask,
   onDelete
 }: {
   id: string,
   task: TaskView;
   status: string;
+  color: string;
   updateTask: any;
   onDelete: any;
 }) {
@@ -39,7 +41,7 @@ export default function TaskCard({
   };
 
   return (
-    <div ref={setNodeRef} style={style} {...listeners} {...attributes} className="border bg-gray-100 my-1 rounded-md">
+    <div ref={setNodeRef} style={style} {...listeners} {...attributes} className={`border bg-gray-100 my-1 rounded-m border-b-4 border-b-${color}-500`}>
       <TaskViewShifter task={task} status={status} isEditing={isEditing} updateTask={updateTask} onUpdated={() => setIsEditing(false)} onDelete={onDelete} onEdit={() => setIsEditing(true)} onCancelEdit={() => setIsEditing(false)}></TaskViewShifter>
     </div>
   );

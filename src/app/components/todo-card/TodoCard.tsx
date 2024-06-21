@@ -29,7 +29,7 @@ export default function TodoCard({
 
   return (
     <article ref={setNodeRef} className="flex flex-col m-5 w-1/3 min-h-[40rem] bg-white rounded-md p-4 shadow-md">
-      <h2>{title}</h2>
+      <h2 className="text-lg font-bold">{title}</h2>
 
       {children}
 

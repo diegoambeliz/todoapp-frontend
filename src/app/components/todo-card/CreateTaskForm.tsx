@@ -49,27 +49,35 @@ export default function CreateTaskForm({
   };
 
   return (
-    <form ref={ref} action={handleSubmit}>
+    <form
+      className="bg-gray-100 border my-1 flex flex-col p-2 rounded-md"
+      ref={ref}
+      action={handleSubmit}
+    >
       <textarea
+        maxLength={250}
         required
         value={task.description}
         onChange={handleChange}
         name="description"
         placeholder="Description"
+        className="p-2 mb-2 rounded-md border-gray-500 resize-none min-h-28"
       ></textarea>
 
       <input
         required
         name="deadline"
+        className="p-2 w-fit rounded-md"
         value={task.deadline}
         onChange={handleChange}
         type="date"
       />
-
-      <button type="submit">Create</button>
-      <button type="button" onClick={onCancel}>
-        Cancel
-      </button>
+      <div className="flex mt-3 h-10 justify-end w-full">
+        <button className="me-2 bg-blue-600 hover:bg-blue-700 px-5 rounded-md text-white" type="submit">Create</button>
+        <button className="px-5 hover:bg-gray-200 rounded-md" type="button" onClick={onCancel}>
+          Cancel
+        </button>
+      </div>
     </form>
   );
 }

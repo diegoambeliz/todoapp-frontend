@@ -97,6 +97,7 @@ export default function TodoBoard({ apiUrl }: { apiUrl: string }) {
                     <TaskCard
                       id={"todo" + index}
                       status="todo"
+                      color="red"
                       updateTask={update}
                       onDelete={(id: string) => remove(id)}
                       key={x.id}
@@ -120,6 +121,7 @@ export default function TodoBoard({ apiUrl }: { apiUrl: string }) {
                     <TaskCard
                       id={"doing" + index}
                       status="doing"
+                      color="blue"
                       updateTask={update}
                       onDelete={(id: string) => remove(id)}
                       key={x.id}
@@ -143,6 +145,7 @@ export default function TodoBoard({ apiUrl }: { apiUrl: string }) {
                     <TaskCard
                       id={"done" + index}
                       status="done"
+                      color="green"
                       updateTask={update}
                       onDelete={(id: string) => remove(id)}
                       key={x.id}
