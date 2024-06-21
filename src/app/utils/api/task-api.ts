@@ -1,6 +1,7 @@
 import axios, { AxiosHeaders } from "axios";
 import { TaskCreate, TaskEdit, TaskView } from "./models/Task";
 import { TaskGroupView } from "./models/TaskGroup";
+import toast from "react-hot-toast";
 
 const https = require('https');
 
@@ -19,7 +20,10 @@ export async function taskGetAll(apiUrl:string): Promise<void | TaskGroupView[]>
           return response.data;
         })
         .catch(error => {
-          console.error("Error: " + error.message);
+          toast.error("Error: " + error.message, {
+            id: "error",
+            position: "bottom-right"
+          })
         })
 }
 
@@ -34,7 +38,10 @@ export function taskCreate(apiUrl: string, task: TaskCreate){
         return true;
       })
       .catch(error => {
-        console.log(error.message);
+        toast.error("Error: " + error.message, {
+          id: "error",
+          position: "bottom-right"
+        })
       })
 }
 
@@ -49,7 +56,10 @@ export function taskUpdate(apiUrl: string, task: TaskEdit){
         return true;
       })
       .catch(error => {
-        console.log(error.message);
+        toast.error("Error: " + error.message, {
+          id: "error",
+          position: "bottom-right"
+        })
       })
 }
 
@@ -63,6 +73,9 @@ export function taskRemove(apiUrl: string, id: string){
         return true;
       })
       .catch(error => {
-        console.log(error.message);
+        toast.error("Error: " + error.message, {
+          id: "error",
+          position: "bottom-right"
+        })
       })
 }
