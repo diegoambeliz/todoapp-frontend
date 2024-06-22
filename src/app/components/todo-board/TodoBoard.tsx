@@ -64,7 +64,7 @@ export default function TodoBoard({ apiUrl }: { apiUrl: string }) {
   const touchSensor = useSensor(TouchSensor, {
     // Press delay of 250ms, with tolerance of 5px of movement
     activationConstraint: {
-      delay: 250,
+      delay: 100,
       tolerance: 5,
     },
   });
@@ -83,7 +83,7 @@ export default function TodoBoard({ apiUrl }: { apiUrl: string }) {
 
   return (
     <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
-      <div className="flex w-full">
+      <div className="flex w-full flex-wrap lg:flex-nowrap">
         <TodoCard
           title="To Do"
           status="todo"
